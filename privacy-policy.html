@@ -84,6 +84,7 @@
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    strong { color: var(--text); }
     .badge {
       display: inline-block;
       background: var(--accent);
@@ -107,7 +108,7 @@
 <body>
   <div class="container" aria-label="Nội dung chính sách bảo mật">
     <h1>🔐 Chính sách Bảo mật</h1>
-    <p class="subtitle">Cập nhật lần cuối: 27 tháng 5, 2026</p>
+    <p class="subtitle">Cập nhật lần cuối: 12 tháng 6, 2026</p>
 
     <p>Novara: AI Book Translator ("Ứng dụng", "chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng ứng dụng.</p>
 
@@ -124,19 +125,9 @@
         </thead>
         <tbody>
           <tr>
-            <td>Email đăng nhập</td>
-            <td>Xác thực tài khoản, đồng bộ dữ liệu</td>
-            <td>Supabase (Cloud)</td>
-          </tr>
-          <tr>
-            <td>Tên hiển thị</td>
-            <td>Hiển thị trong ứng dụng</td>
-            <td>Supabase (Cloud)</td>
-          </tr>
-          <tr>
-            <td>Lịch sử đọc & dịch</td>
-            <td>Theo dõi tiến trình cá nhân</td>
-            <td>Thiết bị (SQLite)</td>
+            <td>API keys (Gemini / DeepSeek)</td>
+            <td>Kết nối dịch vụ AI dịch thuật</td>
+            <td>Thiết bị (iOS Keychain)</td>
           </tr>
           <tr>
             <td>Nội dung EPUB</td>
@@ -144,55 +135,65 @@
             <td>Thiết bị (SQLite)</td>
           </tr>
           <tr>
-            <td>Giao dịch mua hàng</td>
-            <td>Quản lý VIP & Coins</td>
-            <td>Supabase (Cloud)</td>
+            <td>Lịch sử đọc & dịch</td>
+            <td>Theo dõi tiến trình cá nhân</td>
+            <td>Thiết bị (SQLite)</td>
           </tr>
           <tr>
             <td>Cài đặt ứng dụng</td>
             <td>Tùy chỉnh trải nghiệm</td>
             <td>Thiết bị (Local)</td>
           </tr>
+          <tr>
+            <td>Thuật ngữ & nhân vật</td>
+            <td>Cải thiện chất lượng dịch</td>
+            <td>Thiết bị (SQLite)</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <h2>2. Cách chúng tôi sử dụng thông tin</h2>
+    <h2>2. Mô hình BYOK — Dữ liệu KHÔNG qua máy chủ chúng tôi</h2>
+    <div class="card">
+      <p>Novara hoạt động theo mô hình <strong>BYOK (Bring Your Own Key)</strong>:</p>
+      <ul>
+        <li>Bạn cung cấp API key cá nhân từ <strong>Google AI Studio</strong> hoặc <strong>DeepSeek</strong>.</li>
+        <li>API keys được lưu trữ <strong>hoàn toàn trên thiết bị</strong> bằng iOS Keychain (encrypted).</li>
+        <li>Khi dịch, nội dung sách được gửi <strong>trực tiếp</strong> từ thiết bị của bạn đến API AI — <strong>KHÔNG</strong> đi qua máy chủ của chúng tôi.</li>
+        <li>Chúng tôi <strong>KHÔNG thu thập, lưu trữ, hoặc truy cập</strong> API key hay nội dung dịch của bạn.</li>
+      </ul>
+    </div>
+
+    <h2>3. Cách chúng tôi sử dụng thông tin</h2>
     <ul>
-      <li><strong>Xác thực:</strong> Đăng nhập qua Google hoặc Apple ID để đồng bộ dữ liệu giữa các thiết bị.</li>
-      <li><strong>Dịch thuật:</strong> Nội dung sách được gửi đến API AI (DeepSeek/Gemini) để dịch. Nội dung KHÔNG được lưu trữ bởi nhà cung cấp AI sau khi xử lý.</li>
-      <li><strong>Đồng bộ:</strong> Sao lưu dữ liệu lên Google Drive cá nhân của bạn (nếu bạn bật tính năng này).</li>
-      <li><strong>Thanh toán:</strong> Giao dịch mua hàng được xử lý qua Apple App Store / Google Play Store. Chúng tôi không thu thập thông tin thẻ tín dụng.</li>
-      <li><strong>Quảng cáo:</strong> Google AdMob hiển thị quảng cáo cho người dùng miễn phí. Trên iOS, chúng tôi xin quyền App Tracking Transparency (ATT) trước khi theo dõi.</li>
+      <li><strong>Dịch thuật:</strong> Nội dung sách được gửi trực tiếp đến API AI (Google Gemini / DeepSeek) để dịch. Nội dung KHÔNG được lưu trữ bởi nhà cung cấp AI sau khi xử lý.</li>
+      <li><strong>Lưu trữ cục bộ:</strong> Sách, bản dịch, thuật ngữ và cài đặt được lưu trữ trên thiết bị của bạn.</li>
+      <li><strong>Không thu thập analytics:</strong> Chúng tôi không sử dụng bất kỳ dịch vụ analytics hoặc tracking nào.</li>
     </ul>
 
-    <h2>3. Chia sẻ dữ liệu với bên thứ ba</h2>
-    <p>Chúng tôi KHÔNG bán hoặc chia sẻ thông tin cá nhân của bạn với bên thứ ba vì mục đích thương mại. Dữ liệu chỉ được chia sẻ với:</p>
+    <h2>4. Chia sẻ dữ liệu với bên thứ ba</h2>
+    <p>Chúng tôi <strong>KHÔNG bán</strong> hoặc chia sẻ thông tin cá nhân của bạn. Dữ liệu chỉ được gửi đến:</p>
     <ul>
-      <li><strong>Supabase:</strong> Lưu trữ tài khoản và giao dịch (máy chủ tại Singapore/US).</li>
-      <li><strong>Google/Apple:</strong> Xác thực đăng nhập OAuth.</li>
-      <li><strong>DeepSeek/Google AI:</strong> Xử lý dịch thuật (dữ liệu không được lưu giữ).</li>
-      <li><strong>Google AdMob:</strong> Hiển thị quảng cáo (tuân theo chính sách của Google).</li>
+      <li><strong>Google Gemini API:</strong> Nội dung chương sách (để dịch) — theo <a href="https://ai.google.dev/terms" target="_blank">Google AI Terms</a>.</li>
+      <li><strong>DeepSeek API:</strong> Nội dung chương sách (để dịch) — theo <a href="https://platform.deepseek.com/terms" target="_blank">DeepSeek Terms</a>.</li>
     </ul>
+    <p>Cả hai nhà cung cấp đều cam kết không sử dụng dữ liệu API để huấn luyện mô hình.</p>
 
-    <h2>4. Bảo mật dữ liệu</h2>
+    <h2>5. Bảo mật dữ liệu</h2>
     <ul>
       <li>API keys được lưu trữ bằng <strong>Flutter Secure Storage</strong> (iOS Keychain / Android EncryptedSharedPreferences).</li>
-      <li>Dữ liệu nhạy cảm trong cơ sở dữ liệu cục bộ được <strong>mã hóa AES-256</strong>.</li>
       <li>Tất cả kết nối mạng sử dụng <strong>HTTPS/TLS</strong>.</li>
-      <li>Đồng bộ Google Drive sử dụng <strong>OAuth 2.0</strong> với phạm vi giới hạn (appdata only).</li>
+      <li>Dữ liệu sách lưu trên thiết bị trong <strong>SQLite database</strong> nằm trong sandbox ứng dụng.</li>
+      <li>Ứng dụng không sử dụng mã hóa miễn trừ (ITSAppUsesNonExemptEncryption = NO).</li>
     </ul>
 
-    <h2>5. Quyền của bạn</h2>
+    <h2>6. Quyền của bạn</h2>
     <ul>
       <li><strong>Truy cập:</strong> Bạn có thể xem tất cả dữ liệu của mình trong ứng dụng.</li>
-      <li><strong>Xóa:</strong> Bạn có thể xóa tài khoản vĩnh viễn trong Cài đặt → Vùng Nguy Hiểm. Toàn bộ dữ liệu trên server sẽ bị xóa.</li>
+      <li><strong>Xóa:</strong> Gỡ cài đặt ứng dụng sẽ xóa toàn bộ dữ liệu cục bộ.</li>
       <li><strong>Xuất:</strong> Bạn có thể xuất sách đã dịch dưới dạng EPUB.</li>
-      <li><strong>Thu hồi quyền:</strong> Bạn có thể thu hồi quyền truy cập Google Drive bất kỳ lúc nào qua cài đặt tài khoản Google.</li>
+      <li><strong>Kiểm soát API:</strong> Bạn có thể xóa hoặc thay đổi API key bất kỳ lúc nào trong Cài đặt.</li>
     </ul>
-
-    <h2>6. Lưu trữ dữ liệu trên thiết bị</h2>
-    <p>Phần lớn dữ liệu (sách, bản dịch, cài đặt) được lưu trữ <strong>cục bộ trên thiết bị</strong> của bạn. Nếu bạn gỡ cài đặt ứng dụng, dữ liệu cục bộ sẽ bị xóa.</p>
 
     <h2>7. Trẻ em</h2>
     <p>Ứng dụng không dành cho trẻ em dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin từ trẻ em.</p>
@@ -207,8 +208,8 @@
     </div>
 
     <div class="footer">
-      <p>© 2026 EPUB Translator. Mọi quyền được bảo lưu.</p>
-      <p><a href="terms-of-service">Điều khoản Sử dụng</a></p>
+      <p>© 2026 Novara: AI Book Translator. Mọi quyền được bảo lưu.</p>
+      <p><a href="terms-of-service.html">Điều khoản Sử dụng</a></p>
     </div>
   </div>
 </body>
