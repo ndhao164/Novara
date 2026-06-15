@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novara - AI Book Translator | Dịch Truyện Trung Quốc Bằng AI</title>
+  <meta name="description" content="Novara - Ứng dụng dịch truyện tiểu thuyết Trung Quốc sang Tiếng Việt bằng trí tuệ nhân tạo. Hỗ trợ dịch EPUB đa luồng với Gemini AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #111827;
+      --bg3: #1a2236;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --success: #22c55e;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ──────────────────────────────────────── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    nav a {
+      color: var(--text-muted); margin-left: 24px; font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.08), transparent 60%);
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: var(--accent-light); font-size: 13px; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800; letter-spacing: -0.5px;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero p {
+      font-size: 16px; color: var(--text-muted);
+      max-width: 600px; margin: 0 auto 32px;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 10px;
+      background: var(--accent); color: white;
+      font-weight: 700; font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+      text-decoration: none;
+    }
+    .app-store-badge { height: 50px; margin-top: 16px; }
+
+    /* ── Features ─────────────────────────────────────── */
+    .features {
+      padding: 80px 24px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .features h2 {
+      text-align: center; font-size: 28px; font-weight: 800;
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      padding: 24px; border-radius: 14px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 14px;
+    }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); margin: 0 12px; }
+    footer a:hover { color: var(--text); }
+    .footer-links { margin-bottom: 12px; }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">📖</div>
+      Novara
+    </div>
+    <nav>
+      <a href="#features">Tính năng</a>
+      <a href="privacy.html">Quyền riêng tư</a>
+      <a href="terms.html">Điều khoản</a>
+      <a href="support.html">Hỗ trợ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">✨ Powered by Gemini AI</div>
+    <h1>Dịch Truyện Trung Quốc<br><span>Bằng Trí Tuệ Nhân Tạo</span></h1>
+    <p>Novara giúp bạn dịch tiểu thuyết Trung Quốc sang Tiếng Việt với văn phong mượt mà, tự nhiên nhất nhờ AI — hỗ trợ dịch đa luồng hàng loạt chương cùng lúc.</p>
+    <a href="https://apps.apple.com/app/id6779869324" class="cta-btn">
+      🍎 Tải trên App Store
+    </a>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Tính Năng Nổi Bật</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(255,193,7,0.1)">⚡</div>
+        <h3>Dịch Đa Luồng Siêu Tốc</h3>
+        <p>Sử dụng Gemini & DeepSeek AI để dịch hàng loạt chương cùng lúc. Tốc độ vượt trội so với dịch thủ công.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(168,85,247,0.1)">🧠</div>
+        <h3>Trích Xuất Thực Thể Sâu</h3>
+        <p>Tự động phát hiện nhân vật, cảnh giới tu tiên, chiêu thức và world-building. Liên kết ngữ cảnh truyện chặt chẽ.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(59,130,246,0.1)">📚</div>
+        <h3>Từ Điển Thuật Ngữ Thông Minh</h3>
+        <p>Glossary giúp nhất quán cách dịch tên riêng, chiêu thức, xưng hô nam nữ xuyên suốt toàn bộ truyện.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(34,197,94,0.1)">🎧</div>
+        <h3>Đọc & Nghe Truyện</h3>
+        <p>Chế độ đọc truyện tối ưu cho mobile với text-to-speech tích hợp, cho phép nghe truyện mọi lúc mọi nơi.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(236,72,153,0.1)">🔐</div>
+        <h3>Bảo Mật Tuyệt Đối</h3>
+        <p>Dữ liệu sách chỉ lưu trên thiết bị của bạn. Không có server trung gian, không lưu trữ nội dung trên cloud.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(251,146,60,0.1)">📱</div>
+        <h3>Hỗ Trợ EPUB</h3>
+        <p>Nhập file EPUB trực tiếp, dịch và xuất ra file EPUB đã dịch để đọc trên bất kỳ ứng dụng đọc sách nào.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Chính sách Quyền riêng tư</a>
+      <a href="terms.html">Điều khoản Sử dụng</a>
+      <a href="support.html">Hỗ trợ</a>
+    </div>
+    <p>&copy; 2025 Novara. All rights reserved.</p>
+  </footer>
+</body>
+</html>
