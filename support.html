@@ -3,59 +3,540 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hỗ trợ - Novara</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Hỗ trợ & Hướng dẫn - Novara</title>
+  <meta name="description" content="Trung tâm hỗ trợ và hướng dẫn cấu hình API Key Google Gemini, DeepSeek cho ứng dụng dịch truyện Novara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #111827;
+      --bg3: #1a2236;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-deepseek: #4d6bfe;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --success: #22c55e;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #0a0e1a; color: #f1f5f9;
-      line-height: 1.8; padding: 80px 24px 40px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 80px; /* For fixed header */
     }
-    .container { max-width: 700px; margin: 0 auto; }
-    a { color: #60a5fa; }
-    h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-    .subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 32px; }
-    h2 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; color: #60a5fa; }
-    p, li { font-size: 14px; color: #cbd5e1; margin-bottom: 12px; }
-    ul { padding-left: 20px; }
-    .back { display: inline-block; margin-bottom: 24px; color: #94a3b8; font-size: 14px; }
+
+    a { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text); text-decoration: underline; }
+
+    /* ── Header ──────────────────────────────────────── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    nav a {
+      color: var(--text-muted); margin-left: 24px; font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Container ───────────────────────────────────── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .back-btn:hover {
+      color: var(--text);
+      text-decoration: none;
+      transform: translateX(-4px);
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--text), var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Section Title ───────────────────────────────── */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin-left: 10px;
+    }
+
+    /* ── Tabs Component ─────────────────────────────── */
+    .tabs-container {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+    .tabs-header {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: rgba(17, 24, 39, 0.6);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 18px 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .tab-btn.active {
+      color: var(--text);
+      background: var(--bg2);
+      position: relative;
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+    .tab-btn[data-tab="deepseek"].active::after {
+      background: var(--accent-deepseek);
+    }
+
+    .tab-pane {
+      display: none;
+      padding: 32px;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Instruction Guide ───────────────────────────── */
+    ol.guide-steps {
+      padding-left: 20px;
+      margin-bottom: 24px;
+    }
+    ol.guide-steps li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+    ol.guide-steps li strong {
+      color: var(--text);
+    }
+
+    .note-box {
+      background: rgba(59, 130, 246, 0.04);
+      border: 1px dashed rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .tab-pane[id="deepseek"] .note-box {
+      background: rgba(77, 107, 254, 0.04);
+      border-color: rgba(77, 107, 254, 0.2);
+    }
+    .note-box p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .note-box p:last-child {
+      margin-bottom: 0;
+    }
+    .note-box strong {
+      color: var(--text);
+    }
+
+    /* ── Accordion FAQ ───────────────────────────────── */
+    .faq-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    .faq-item:hover {
+      border-color: rgba(59, 130, 246, 0.2);
+      background: rgba(17, 24, 39, 0.8);
+    }
+    .faq-question {
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-question h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0;
+    }
+    .faq-icon {
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+      font-size: 12px;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+      padding: 0 24px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .faq-item.active {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 16px 24px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: var(--accent-light);
+    }
+
+    /* ── Contact Card ────────────────────────────────── */
+    .contact-section {
+      margin-top: 48px;
+    }
     .contact-card {
-      padding: 24px; border-radius: 12px;
-      background: #111827; border: 1px solid #1e293b;
-      margin: 20px 0;
+      background: linear-gradient(135deg, var(--bg2), rgba(17, 24, 39, 0.7));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    }
+    .contact-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .contact-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .contact-btn:hover {
+      background: var(--accent-light);
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+    .contact-meta {
+      display: block;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); margin: 0 12px; }
+    footer a:hover { color: var(--text); }
+    .footer-links { margin-bottom: 12px; }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      .tab-btn { padding: 14px 10px; font-size: 13px; }
+      .tab-pane { padding: 20px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" class="back">← Về trang chủ</a>
-    <h1>Hỗ Trợ & Liên Hệ</h1>
-    <p class="subtitle">Chúng tôi luôn sẵn sàng hỗ trợ bạn</p>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">📖</div>
+      Novara
+    </div>
+    <nav>
+      <a href="index.html#features">Tính năng</a>
+      <a href="privacy-policy.html">Quyền riêng tư</a>
+      <a href="terms-of-service.html">Điều khoản</a>
+      <a href="support.html">Hỗ trợ</a>
+    </nav>
+  </header>
 
-    <div class="contact-card">
-      <h3>📧 Email hỗ trợ</h3>
-      <p><a href="mailto:ndhao164@gmail.com">ndhao164@gmail.com</a></p>
-      <p style="color:#94a3b8;font-size:12px;">Thời gian phản hồi: trong vòng 24-48 giờ</p>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Quay lại Trang chủ</a>
+    
+    <section class="hero">
+      <h1>Hỗ Trợ & Hướng Dẫn Sử Dụng</h1>
+      <p>Nơi giải đáp mọi thắc mắc và giúp bạn cấu hình dịch truyện bằng các API AI tiên tiến nhất hiện nay.</p>
+    </section>
+
+    <h2 class="section-title">🔑 Hướng dẫn cấu hình API Key</h2>
+    
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="gemini">
+          <span style="font-size: 16px;">✨</span> Google Gemini (Miễn phí)
+        </button>
+        <button class="tab-btn" data-tab="deepseek">
+          <span style="font-size: 16px;">🐳</span> DeepSeek (Trả phí)
+        </button>
+      </div>
+
+      <!-- Gemini Tab -->
+      <div class="tab-pane active" id="gemini">
+        <ol class="guide-steps">
+          <li>Truy cập trang web Google AI Studio tại: <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">https://aistudio.google.com/</a>.</li>
+          <li>Đăng nhập bằng tài khoản Google của bạn.</li>
+          <li>Nếu đây là lần đầu truy cập, hãy đồng ý với các điều khoản điều kiện sử dụng dịch vụ.</li>
+          <li>Tại giao diện chính, nhấp vào nút <strong>"Get API key"</strong> ở góc trên bên trái (hoặc thanh menu bên trái).</li>
+          <li>Chọn <strong>"Create API key"</strong>.</li>
+          <li>Chọn dự án (project) hiện có hoặc tạo mới, sau đó chọn <strong>"Create API key in existing project"</strong>.</li>
+          <li>Sao chép (Copy) khóa API (API Key) vừa được tạo.</li>
+          <li>Mở ứng dụng <strong>Novara</strong>, vào mục <strong>Cài đặt</strong> và dán (Paste) API Key vào ô cấu hình Google Gemini.</li>
+        </ol>
+        <div class="note-box">
+          <p>💡 <strong>Hạn mức miễn phí:</strong> API Key Gemini miễn phí có giới hạn tần suất yêu cầu (RPM - Requests Per Minute), nhưng hoàn toàn đáp ứng tốt nhu cầu dịch truyện cá nhân của bạn mà không phát sinh chi phí.</p>
+          <p>💡 <strong>Mẹo nhỏ:</strong> Mỗi tài khoản Google có thể tạo tối đa 10 project tương ứng với 10 API key khác nhau, giúp bạn dịch và đọc truyện cả ngày mà không lo về việc bị gián đoạn hay hết key.</p>
+          <p style="color: #f87171;"><strong>⚠️ Cảnh báo bảo mật:</strong> Tuyệt đối KHÔNG chia sẻ API Key của bạn lên Internet. Nếu bị lộ, người khác có thể sử dụng hết hạn mức (quota) của bạn.</p>
+        </div>
+      </div>
+
+      <!-- DeepSeek Tab -->
+      <div class="tab-pane" id="deepseek">
+        <ol class="guide-steps">
+          <li>Truy cập trang đăng ký/đăng nhập của DeepSeek tại: <a href="https://platform.deepseek.com/sign_in" target="_blank" rel="noopener noreferrer">https://platform.deepseek.com/sign_in</a>.</li>
+          <li>Đăng nhập bằng tài khoản DeepSeek của bạn (hoặc đăng ký nếu chưa có tài khoản).</li>
+          <li>Đi đến mục <strong>"API Keys"</strong> ở thanh menu quản lý bên trái.</li>
+          <li>Nhấp vào nút <strong>"Create new API key"</strong>.</li>
+          <li>Nhập tên gợi nhớ (ví dụ: "Novara Translator") rồi nhấp <strong>"Create"</strong>.</li>
+          <li>Sao chép (Copy) khóa API vừa được tạo (Lưu ý: Khóa chỉ hiển thị một lần duy nhất tại bước này).</li>
+          <li>Mở ứng dụng <strong>Novara</strong>, vào mục <strong>Cài đặt</strong> và dán (Paste) API Key vào ô cấu hình DeepSeek.</li>
+        </ol>
+        <div class="note-box">
+          <p>💡 <strong>Cơ chế thanh toán:</strong> DeepSeek hoạt động theo cơ chế nạp tiền trước sử dụng sau (Pay-as-you-go). Bạn cần nạp một số tiền nhỏ vào tài khoản (mục <strong>Top Up</strong>) để kích hoạt API.</p>
+          <p>💡 <strong>Ưu điểm:</strong> Giá dịch vụ dịch thuật của DeepSeek cực kỳ rẻ và chất lượng dịch văn phong truyện Trung Quốc rất mượt mà, tự nhiên.</p>
+          <p style="color: #f87171;"><strong>⚠️ Cảnh báo bảo mật:</strong> KHÔNG chia sẻ API Key của bạn với bất kỳ ai để tránh phát sinh chi phí ngoài ý muốn trong tài khoản của bạn.</p>
+        </div>
+      </div>
     </div>
 
-    <h2>Câu hỏi thường gặp</h2>
+    <h2 class="section-title">❓ Câu hỏi thường gặp (FAQ)</h2>
 
-    <h2>Q: Làm sao để bắt đầu dịch truyện?</h2>
-    <p>Mở ứng dụng → Nhấn "Thêm EPUB" → Chọn file EPUB trên thiết bị → Cấu hình và bắt đầu dịch.</p>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Làm sao để bắt đầu dịch truyện?</h3>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Mở ứng dụng &rarr; Nhấn "Thêm EPUB" &rarr; Chọn file EPUB trên thiết bị của bạn &rarr; Cấu hình và bắt đầu quá trình dịch.
+        </div>
+      </div>
 
-    <h2>Q: Tôi cần gì để sử dụng?</h2>
-    <p>Bạn cần một API key từ Google Gemini (miễn phí) hoặc DeepSeek. Vào Cài đặt → nhập API key → bắt đầu dịch.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Tôi cần gì để sử dụng ứng dụng?</h3>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Bạn cần chuẩn bị một API key từ Google Gemini (miễn phí) hoặc DeepSeek (có phí). Sau đó vào Cài đặt trong ứng dụng &rarr; nhập API key &rarr; bắt đầu dịch truyện.
+        </div>
+      </div>
 
-    <h2>Q: Dữ liệu sách có được upload lên server không?</h2>
-    <p>Không. Toàn bộ dữ liệu sách được lưu cục bộ trên thiết bị. Chỉ văn bản cần dịch mới được gửi trực tiếp đến API AI (Google/DeepSeek) thông qua API key của bạn.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Dữ liệu sách có được upload lên server không?</h3>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Không. Toàn bộ dữ liệu sách được lưu cục bộ trên thiết bị của bạn. Chỉ văn bản cần dịch mới được gửi trực tiếp đến API AI (Google/DeepSeek) thông qua API key của bạn để xử lý.
+        </div>
+      </div>
 
-    <h2>Q: Tôi có thể dịch bao nhiêu sách?</h2>
-    <p>Không giới hạn số lượng sách. Chi phí dịch phụ thuộc vào quota API key của bạn.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Tôi có thể dịch tối đa bao nhiêu cuốn sách?</h3>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Không giới hạn số lượng sách. Chi phí dịch phụ thuộc hoàn toàn vào quota API key của bạn (đối với gói miễn phí của Gemini thì hoàn toàn không tốn tiền).
+        </div>
+      </div>
 
-    <h2>Q: Ứng dụng hỗ trợ ngôn ngữ nào?</h2>
-    <p>Hiện tại Novara tập trung vào việc dịch từ Tiếng Trung (giản thể/phồn thể) sang Tiếng Việt.</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Ứng dụng hỗ trợ những ngôn ngữ dịch nào?</h3>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Hiện tại, Novara tập trung tối ưu sâu cho việc dịch từ Tiếng Trung (giản thể / phồn thể) sang Tiếng Việt.
+        </div>
+      </div>
+    </div>
+
+    <section class="contact-section">
+      <div class="contact-card">
+        <h3>✉️ Bạn cần hỗ trợ thêm?</h3>
+        <p>Nếu bạn gặp sự cố kỹ thuật hoặc có bất kỳ câu hỏi nào khác, đừng ngần ngại liên hệ với chúng tôi.</p>
+        <a href="mailto:ndhao164@gmail.com" class="contact-btn">Gửi Email Hỗ Trợ</a>
+        <span class="contact-meta">Thời gian phản hồi thông thường: trong vòng 24 - 48 giờ</span>
+      </div>
+    </section>
   </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Chính sách Quyền riêng tư</a>
+      <a href="terms-of-service.html">Điều khoản Sử dụng</a>
+      <a href="support.html">Hỗ trợ</a>
+    </div>
+    <p>&copy; 2025 Novara. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tab Switcher Logic
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tabId = btn.getAttribute('data-tab');
+          
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+          
+          btn.classList.add('active');
+          const targetPane = document.getElementById(tabId);
+          if (targetPane) {
+            targetPane.classList.add('active');
+          }
+        });
+      });
+
+      // Accordion FAQ Logic
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const item = question.parentElement;
+          const isActive = item.classList.contains('active');
+          
+          // Close all FAQ items
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          
+          // Open clicked one if it wasn't active
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

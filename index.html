@@ -30,8 +30,8 @@
       overflow-x: hidden;
     }
 
-    a { color: var(--accent-light); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text); }
 
     /* ── Header ──────────────────────────────────────── */
     header {
@@ -60,7 +60,7 @@
 
     /* ── Hero ─────────────────────────────────────────── */
     .hero {
-      padding: 140px 24px 80px;
+      padding: 160px 24px 80px;
       text-align: center;
       background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.08), transparent 60%);
     }
@@ -70,7 +70,7 @@
       background: rgba(59, 130, 246, 0.1);
       border: 1px solid rgba(59, 130, 246, 0.2);
       color: var(--accent-light); font-size: 13px; font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .hero h1 {
       font-size: clamp(28px, 5vw, 48px);
@@ -85,7 +85,8 @@
     .cta-btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 28px; border-radius: 10px;
-      background: var(--accent); color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
       font-weight: 700; font-size: 15px;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
@@ -95,7 +96,7 @@
       box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
       text-decoration: none;
     }
-    .app-store-badge { height: 50px; margin-top: 16px; }
+
 
     /* ── Features ─────────────────────────────────────── */
     .features {
@@ -112,22 +113,23 @@
       gap: 20px;
     }
     .feature-card {
-      padding: 24px; border-radius: 14px;
+      padding: 28px; border-radius: 14px;
       background: var(--bg2);
       border: 1px solid var(--border);
-      transition: border-color 0.3s, transform 0.3s;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
     .feature-card:hover {
       border-color: rgba(59, 130, 246, 0.3);
       transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.05);
     }
     .feature-icon {
       width: 44px; height: 44px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 14px;
+      font-size: 22px; margin-bottom: 18px;
     }
-    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-    .feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
 
     /* ── Footer ───────────────────────────────────────── */
     footer {
@@ -142,6 +144,7 @@
 
     @media (max-width: 600px) {
       nav { display: none; }
+      .hero { padding: 120px 16px 60px; }
     }
   </style>
 </head>
@@ -188,7 +191,7 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon" style="background:rgba(34,197,94,0.1)">🎧</div>
-        <h3>Đọc & Nghe Truyện</h3>
+        <h3>Đọc & Nghe Truyện <span style="font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; background: rgba(59,130,246,0.15); color: var(--accent-light); margin-left: 6px; vertical-align: middle;">Đang phát triển</span></h3>
         <p>Chế độ đọc truyện tối ưu cho mobile với text-to-speech tích hợp, cho phép nghe truyện mọi lúc mọi nơi.</p>
       </div>
       <div class="feature-card">
@@ -199,7 +202,7 @@
       <div class="feature-card">
         <div class="feature-icon" style="background:rgba(251,146,60,0.1)">📱</div>
         <h3>Hỗ Trợ EPUB</h3>
-        <p>Nhập file EPUB trực tiếp, dịch và xuất ra file EPUB đã dịch để đọc trên bất kỳ ứng dụng đọc sách nào.</p>
+        <p>Nhập file EPUB trực tiếp và dịch truyện ngay trên thiết bị của bạn một cách nhanh chóng, dễ dàng.</p>
       </div>
     </div>
   </section>

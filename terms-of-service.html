@@ -3,90 +3,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Điều khoản Sử dụng | Novara: AI Book Translator</title>
+  <title>Điều khoản Sử dụng | Novara - AI Book Translator</title>
+  <meta name="description" content="Điều khoản và điều kiện sử dụng ứng dụng dịch sách điện tử Novara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #0f172a;
-      --bg2: #1e293b;
-      --text: #e2e8f0;
-      --text-secondary: #94a3b8;
-      --accent: #38bdf8;
-      --border: #334155;
+      --bg: #0a0e1a;
+      --bg2: #111827;
+      --bg3: #1a2236;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --success: #22c55e;
       --warning: #f59e0b;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      padding: 0 20px;
+      overflow-x: hidden;
+      padding-top: 80px; /* For fixed header */
     }
+
+    a { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text); text-decoration: underline; }
+
+    /* ── Header ──────────────────────────────────────── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    nav a {
+      color: var(--text-muted); margin-left: 24px; font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Container ───────────────────────────────────── */
     .container {
       max-width: 800px;
       margin: 0 auto;
-      padding: 40px 0 80px;
+      padding: 40px 24px 80px;
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-    .subtitle {
-      color: var(--text-secondary);
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
       font-size: 14px;
-      margin-bottom: 40px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: color 0.2s, transform 0.2s;
     }
-    h2 {
-      font-size: 20px;
-      margin-top: 36px;
+    .back-btn:hover {
+      color: var(--text);
+      text-decoration: none;
+      transform: translateX(-4px);
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
       margin-bottom: 12px;
-      color: var(--accent);
+      background: linear-gradient(135deg, var(--text), var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    p, li {
-      color: var(--text-secondary);
+    .hero p {
       font-size: 15px;
-      margin-bottom: 12px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 36px 0 16px;
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    p, li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+    strong {
+      color: var(--text);
     }
     ul, ol {
-      padding-left: 24px;
+      padding-left: 20px;
       margin-bottom: 16px;
     }
-    li { margin-bottom: 6px; }
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* ── Cards ───────────────────────────────────────── */
     .card {
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
-      margin: 16px 0;
+      padding: 24px;
+      margin: 20px 0;
     }
     .warning-card {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px dashed rgba(245, 158, 11, 0.3);
       border-radius: 12px;
-      padding: 20px;
-      margin: 16px 0;
+      padding: 24px;
+      margin: 20px 0;
     }
     .warning-card p {
-      color: var(--warning);
+      color: #fbbf24;
+      margin-bottom: 0;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    strong { color: var(--text); }
-    .footer {
-      margin-top: 60px;
-      padding-top: 20px;
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      padding: 40px 24px;
       border-top: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 13px;
       text-align: center;
+      color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); margin: 0 12px; }
+    footer a:hover { color: var(--text); }
+    .footer-links { margin-bottom: 12px; }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container" aria-label="Nội dung điều khoản dịch vụ">
-    <h1>📋 Điều khoản Sử dụng</h1>
-    <p class="subtitle">Cập nhật lần cuối: 12 tháng 6, 2026</p>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">📖</div>
+      Novara
+    </div>
+    <nav>
+      <a href="index.html#features">Tính năng</a>
+      <a href="privacy-policy.html">Quyền riêng tư</a>
+      <a href="terms-of-service.html">Điều khoản</a>
+      <a href="support.html">Hỗ trợ</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">← Quay lại Trang chủ</a>
+
+    <section class="hero">
+      <h1>📋 Điều khoản Sử dụng</h1>
+      <p>Cập nhật lần cuối: 12 tháng 6, 2026</p>
+    </section>
 
     <p>Bằng việc tải xuống, cài đặt hoặc sử dụng ứng dụng Novara: AI Book Translator ("Ứng dụng"), bạn đồng ý tuân thủ các điều khoản sau đây. Nếu bạn không đồng ý, vui lòng không sử dụng Ứng dụng.</p>
 
@@ -97,12 +198,11 @@
       <li>Dịch thuật nội dung bằng AI (Google Gemini / DeepSeek)</li>
       <li>Text-to-Speech (TTS) — đọc to nội dung đã dịch</li>
       <li>Quản lý thuật ngữ (Glossary) và nhân vật tự động</li>
-      <li>Xuất sách đã dịch dưới dạng EPUB</li>
     </ul>
 
     <h2>2. Mô hình BYOK (Bring Your Own Key)</h2>
     <div class="card">
-      <p>Novara hoạt động theo mô hình <strong>BYOK (Bring Your Own Key)</strong>. Điều này có nghĩa:</p>
+      <p style="margin-bottom: 16px; color: var(--text);">Novara hoạt động theo mô hình <strong>BYOK (Bring Your Own Key)</strong>. Điều này có nghĩa:</p>
       <ul>
         <li>Bạn cần cung cấp <strong>API key cá nhân</strong> từ Google AI Studio hoặc DeepSeek để sử dụng tính năng dịch thuật.</li>
         <li>Novara <strong>KHÔNG bán, cung cấp, hoặc trung gian</strong> dịch vụ API.</li>
@@ -113,11 +213,9 @@
     </div>
 
     <h2>3. Bản quyền Nội dung</h2>
-    
     <div class="warning-card">
       <p>⚠️ <strong>QUAN TRỌNG:</strong> Người dùng chịu hoàn toàn trách nhiệm về bản quyền nội dung EPUB mà họ nhập vào Ứng dụng.</p>
     </div>
-
     <ul>
       <li>Ứng dụng là <strong>công cụ dịch thuật</strong>, không cung cấp hay phân phối nội dung sách.</li>
       <li>Bạn chỉ được phép dịch các tác phẩm mà bạn có quyền sử dụng hợp pháp (sách bạn đã mua, tác phẩm miễn phí, hoặc tác phẩm thuộc public domain).</li>
@@ -168,15 +266,18 @@
     <p>Các điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp sẽ được giải quyết tại tòa án có thẩm quyền tại Thành phố Hồ Chí Minh.</p>
 
     <h2>10. Liên hệ</h2>
-    <div class="card">
-      <p>📧 Email: <a href="mailto:ndhao164@gmail.com">ndhao164@gmail.com</a></p>
-      <p>Chúng tôi sẽ phản hồi trong vòng 48 giờ làm việc.</p>
-    </div>
-
-    <div class="footer">
-      <p>© 2026 Novara: AI Book Translator. Mọi quyền được bảo lưu.</p>
-      <p><a href="privacy-policy.html">Chính sách Bảo mật</a></p>
+    <div class="card" style="text-align: center;">
+      <p style="margin-bottom: 0; font-size: 15px; color: var(--text);">📧 Email: <a href="mailto:ndhao164@gmail.com">ndhao164@gmail.com</a></p>
     </div>
   </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Chính sách Quyền riêng tư</a>
+      <a href="terms-of-service.html">Điều khoản Sử dụng</a>
+      <a href="support.html">Hỗ trợ</a>
+    </div>
+    <p>&copy; 2026 Novara. All rights reserved.</p>
+  </footer>
 </body>
 </html>
