@@ -329,6 +329,20 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
     }
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .telegram-btn {
+      background: #229ed9;
+    }
+    .telegram-btn:hover {
+      background: #34b3f0;
+      box-shadow: 0 4px 12px rgba(34, 158, 217, 0.25);
+    }
     .contact-meta {
       display: block;
       margin-top: 12px;
@@ -484,7 +498,15 @@
       <div class="contact-card">
         <h3>✉️ Bạn cần hỗ trợ thêm?</h3>
         <p>Nếu bạn gặp sự cố kỹ thuật hoặc có bất kỳ câu hỏi nào khác, đừng ngần ngại liên hệ với chúng tôi.</p>
-        <a href="mailto:ndhao164@gmail.com" class="contact-btn">Gửi Email Hỗ Trợ</a>
+        <div class="contact-buttons">
+          <a href="mailto:ndhao164@gmail.com" class="contact-btn">Gửi Email Hỗ Trợ</a>
+          <a href="https://t.me/novara_ai" target="_blank" rel="noopener noreferrer" class="contact-btn telegram-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.4.52-.46-.01-1.34-.26-2-.47-.8-.26-1.43-.4-1.38-.85.03-.24.36-.48.99-.74 3.86-1.68 6.43-2.78 7.73-3.3 3.67-1.48 4.43-1.74 4.93-1.75.11 0 .35.03.51.16.13.11.17.27.19.38.02.12.02.26.01.4z"/>
+            </svg>
+            Kênh Telegram Hỗ Trợ
+          </a>
+        </div>
         <span class="contact-meta">Thời gian phản hồi thông thường: trong vòng 24 - 48 giờ</span>
       </div>
     </section>
