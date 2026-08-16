@@ -186,7 +186,7 @@
 
     <section class="hero">
       <h1>📋 Điều khoản Sử dụng</h1>
-      <p>Cập nhật lần cuối: 12 tháng 6, 2026</p>
+      <p>Cập nhật lần cuối: 16 tháng 8, 2026</p>
     </section>
 
     <p>Bằng việc tải xuống, cài đặt hoặc sử dụng ứng dụng Novara: AI Book Translator ("Ứng dụng"), bạn đồng ý tuân thủ các điều khoản sau đây. Nếu bạn không đồng ý, vui lòng không sử dụng Ứng dụng.</p>
@@ -196,19 +196,31 @@
     <ul>
       <li>Import và đọc sách EPUB</li>
       <li>Dịch thuật nội dung bằng AI (Google Gemini / DeepSeek)</li>
+      <li>Dịch qua Novara AI sau khi đăng nhập và đồng ý upload</li>
+      <li>Mua lượt dịch qua App Store hoặc Google Play</li>
       <li>Text-to-Speech (TTS) — đọc to nội dung đã dịch</li>
       <li>Quản lý thuật ngữ (Glossary) và nhân vật tự động</li>
     </ul>
 
-    <h2>2. Mô hình BYOK (Bring Your Own Key)</h2>
+    <h2>2. Các phương thức dịch</h2>
     <div class="card">
-      <p style="margin-bottom: 16px; color: var(--text);">Novara hoạt động theo mô hình <strong>BYOK (Bring Your Own Key)</strong>. Điều này có nghĩa:</p>
+      <p style="margin-bottom: 16px; color: var(--text);"><strong>BYOK (Bring Your Own Key):</strong></p>
       <ul>
         <li>Bạn cần cung cấp <strong>API key cá nhân</strong> từ Google AI Studio hoặc DeepSeek để sử dụng tính năng dịch thuật.</li>
         <li>Novara <strong>KHÔNG bán, cung cấp, hoặc trung gian</strong> dịch vụ API.</li>
         <li>Bạn <strong>tự chịu trách nhiệm</strong> về chi phí sử dụng API key của mình.</li>
         <li>API keys được lưu trữ <strong>an toàn trên thiết bị</strong> bằng iOS Keychain / Android EncryptedSharedPreferences.</li>
         <li>Novara <strong>KHÔNG truyền hoặc lưu trữ</strong> API key của bạn trên máy chủ của chúng tôi.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p style="margin-bottom: 16px; color: var(--text);"><strong>Novara AI:</strong></p>
+      <ul>
+        <li>Bạn cần đăng nhập bằng Apple hoặc Google và đồng ý rõ ràng trước khi nội dung được upload.</li>
+        <li>Bạn có thể chỉ gửi các chương đã chọn hoặc chủ động chọn lưu toàn bộ sách trên Novara Cloud trong tối đa 15 ngày. Tùy chọn toàn sách không bắt buộc và mặc định tắt.</li>
+        <li>Novara AI sử dụng lượt dịch trong ví. Mức quy đổi tham khảo hiện tại là <strong>30 coin ≈ 1 lượt dịch · tối đa 15.000 ký tự/chương</strong>; báo giá hiển thị trong Ứng dụng trước khi bạn xác nhận là thông tin áp dụng cho giao dịch đó.</li>
+        <li>Lượt dịch mua qua App Store/Google Play là vật phẩm tiêu hao trong Ứng dụng, không đổi thành tiền và không chuyển nhượng giữa tài khoản.</li>
       </ul>
     </div>
 
@@ -237,7 +249,7 @@
     <ul>
       <li>Chất lượng dịch thuật phụ thuộc vào mô hình AI và có thể không hoàn hảo.</li>
       <li>Chúng tôi <strong>KHÔNG đảm bảo</strong> tính chính xác 100% của bản dịch.</li>
-      <li>Nội dung sách được gửi tới API AI (Google Gemini / DeepSeek) để xử lý dịch thuật. Dữ liệu không được lưu trữ bởi nhà cung cấp AI sau khi xử lý.</li>
+      <li>Nội dung được gửi tới provider BYOK hoặc Novara AI tùy lựa chọn của bạn và được xử lý theo Chính sách Quyền riêng tư cùng chính sách của processor áp dụng.</li>
       <li>Dịch vụ AI có thể bị gián đoạn do bảo trì hoặc sự cố bên thứ ba.</li>
       <li>Nội dung dịch có thể bị lọc hoặc từ chối bởi AI nếu vi phạm chính sách nội dung của nhà cung cấp AI.</li>
     </ul>

@@ -200,13 +200,13 @@
 
     <section class="hero">
       <h1>🔐 Chính sách Bảo mật</h1>
-      <p>Cập nhật lần cuối: 12 tháng 6, 2026</p>
+      <p>Cập nhật lần cuối: 16 tháng 8, 2026</p>
     </section>
 
-    <p>Novara: AI Book Translator ("Ứng dụng", "chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng ứng dụng.</p>
+    <p>Novara: AI Book Translator ("Ứng dụng", "chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách Novara xử lý dữ liệu khi bạn đọc, dịch, đăng nhập, sao lưu hoặc mua lượt dịch trong Ứng dụng.</p>
 
     <h2>1. Thông tin chúng tôi thu thập</h2>
-    <p>Ứng dụng thu thập một số thông tin cần thiết trực tiếp trên thiết bị của bạn để vận hành các dịch vụ dịch thuật và tối ưu trải nghiệm đọc sách:</p>
+    <p>Dữ liệu được xử lý phụ thuộc vào tính năng bạn chủ động sử dụng:</p>
     
     <div class="table-container">
       <table>
@@ -243,37 +243,74 @@
             <td>Glossary đồng bộ chất lượng dịch</td>
             <td>Thiết bị (SQLite database cục bộ)</td>
           </tr>
+          <tr>
+            <td><strong>Tài khoản</strong></td>
+            <td>Đăng nhập, bảo vệ tài nguyên và đồng bộ dịch vụ</td>
+            <td>Sign in with Apple/Google, Firebase Authentication và Novara</td>
+          </tr>
+          <tr>
+            <td><strong>Lịch sử mua hàng & ví lượt dịch</strong></td>
+            <td>Xác minh giao dịch, cấp/trừ/hoàn lượt dịch và chống gian lận</td>
+            <td>App Store/Google Play, RevenueCat và Novara</td>
+          </tr>
+          <tr>
+            <td><strong>Nội dung gửi tới Novara AI</strong></td>
+            <td>Báo giá, dịch, trả kết quả và hỗ trợ yêu cầu của bạn</td>
+            <td>Hạ tầng riêng của Novara trong thời hạn giới hạn</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <h2>2. Mô hình BYOK — Dữ liệu KHÔNG qua máy chủ chúng tôi</h2>
+    <h2>2. Hai luồng dịch và phạm vi upload</h2>
     <div class="card">
-      <p style="margin-bottom: 16px; color: var(--text);">Novara hoạt động theo mô hình <strong>BYOK (Bring Your Own Key)</strong>:</p>
+      <p style="margin-bottom: 16px; color: var(--text);"><strong>Local/BYOK:</strong></p>
       <ul>
         <li>Bạn cung cấp API key cá nhân từ <strong>Google AI Studio</strong> hoặc <strong>DeepSeek</strong>.</li>
         <li>API keys được lưu trữ <strong>hoàn toàn trên thiết bị</strong> bằng cơ chế mã hóa bảo mật của hệ điều hành (iOS Keychain / Android EncryptedSharedPreferences).</li>
         <li>Khi dịch, nội dung sách được gửi <strong>trực tiếp</strong> từ thiết bị của bạn đến máy chủ API AI — <strong>KHÔNG</strong> đi qua bất kỳ máy chủ trung gian nào của chúng tôi.</li>
-        <li>Chúng tôi <strong>KHÔNG thu thập, lưu trữ, hoặc truy cập</strong> vào API key hay nội dung tác phẩm dịch thuật của bạn.</li>
+        <li>Novara không nhận API key của bạn trong luồng BYOK. Nhà cung cấp bạn chọn xử lý nội dung theo điều khoản và chính sách riêng của họ.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p style="margin-bottom: 16px; color: var(--text);"><strong>Novara AI (cloud, tùy chọn):</strong></p>
+      <ul>
+        <li>Yêu cầu đăng nhập và sự đồng ý rõ ràng trước khi upload. Import EPUB hoặc đăng nhập không tự động tải sách lên Novara AI.</li>
+        <li>Ở phạm vi <code>selected_chapters</code>, chỉ các chương bạn chọn cùng ngữ cảnh cần thiết để dịch được upload.</li>
+        <li>Nếu máy chủ cho phép <code>full_epub_context</code>, bạn có thể chọn riêng tùy chọn lưu toàn bộ sách trên Novara Cloud trong 15 ngày. Tùy chọn này <strong>không bắt buộc, không được chọn sẵn</strong> và có thể xóa sớm trong Ứng dụng.</li>
+        <li>Nội dung được dùng để báo giá, thực hiện yêu cầu dịch, trả kết quả, chống lạm dụng và hỗ trợ. <code>trainingOptIn=false</code> là mặc định; nội dung không được dùng để huấn luyện nếu bạn chưa opt-in riêng.</li>
       </ul>
     </div>
 
     <h2>3. Cách chúng tôi sử dụng thông tin</h2>
     <ul>
-      <li><strong>Dịch thuật:</strong> Nội dung sách được gửi trực tiếp đến API AI (Google Gemini / DeepSeek) để dịch. Các dữ liệu này KHÔNG được lưu giữ bởi nhà cung cấp AI sau khi quá trình dịch hoàn tất.</li>
+      <li><strong>Dịch thuật:</strong> Xử lý nội dung theo luồng Local/BYOK hoặc Novara AI mà bạn chọn.</li>
       <li><strong>Lưu trữ cục bộ:</strong> Sách, bản dịch, thuật ngữ và cài đặt được lưu trữ ngay trên thiết bị của bạn.</li>
-      <li><strong>Không thu thập analytics:</strong> Chúng tôi hoàn toàn không sử dụng bất kỳ dịch vụ phân tích dữ liệu (analytics) hay theo dõi (tracking) nào.</li>
+      <li><strong>Tài khoản và giao dịch:</strong> Xác thực người dùng, quản lý ví lượt dịch, xác minh giao dịch và xử lý hoàn tiền/chargeback.</li>
+      <li><strong>Analytics:</strong> Chỉ thu thập sự kiện Analytics khi bạn bật tùy chọn này; không gửi nội dung sách, prompt hoặc API key.</li>
     </ul>
 
     <h2>4. Chia sẻ dữ liệu với bên thứ ba</h2>
-    <p>Chúng tôi <strong>KHÔNG bán</strong> hoặc chia sẻ thông tin cá nhân của bạn. Dữ liệu chỉ được gửi trực tiếp từ thiết bị đến:</p>
+    <p>Chúng tôi <strong>không bán</strong> nội dung EPUB, bản dịch hoặc API key của bạn. Tùy tính năng bạn chọn, dữ liệu có thể được xử lý bởi:</p>
     <ul>
-      <li><strong>Google Gemini API:</strong> Nội dung chương sách (để dịch) — theo <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer">Google AI Terms</a>.</li>
-      <li><strong>DeepSeek API:</strong> Nội dung chương sách (để dịch) — theo <a href="https://platform.deepseek.com/terms" target="_blank" rel="noopener noreferrer">DeepSeek Terms</a>.</li>
+      <li><strong>Novara:</strong> tài khoản, consent, báo giá, job, ví và nội dung tạm thời của Novara AI.</li>
+      <li><strong>Apple, Google/Firebase:</strong> xác thực tài khoản; App Store/Google Play xử lý giao dịch.</li>
+      <li><strong>RevenueCat:</strong> xác minh giao dịch mua trong ứng dụng.</li>
+      <li><strong>Provider BYOK bạn chọn:</strong> nhận nội dung trực tiếp từ thiết bị để dịch.</li>
+      <li><strong>Firebase Analytics:</strong> chỉ khi bạn bật Analytics trong Ứng dụng.</li>
     </ul>
-    <p>Cả hai nhà cung cấp đều cam kết không sử dụng dữ liệu API để huấn luyện mô hình.</p>
 
-    <h2>5. Bảo mật dữ liệu</h2>
+    <h2>5. Lưu giữ dữ liệu Novara AI</h2>
+    <ul>
+      <li>Upload không hợp lệ hoặc bỏ dở: xóa trong vòng 24 giờ sau khi hết hạn hoặc xác thực thất bại.</li>
+      <li>Nội dung nguồn cho một job thông thường: xóa trong vòng 24 giờ sau khi job kết thúc.</li>
+      <li>Bản sách được lưu theo tùy chọn <code>full_epub_context</code>: tối đa 15 ngày từ lần sử dụng gần nhất, trừ khi bạn xóa sớm.</li>
+      <li>Kết quả sau lần giao đầu tiên: tối đa 30 ngày; sau khi Ứng dụng xác nhận đã lưu thành công có thêm thời gian đệm tối đa 72 giờ trước khi đủ điều kiện xóa.</li>
+      <li>Metadata consent, giao dịch và audit không chứa nội dung có thể được giữ lâu hơn khi cần cho tài khoản, tranh chấp, chống gian lận hoặc nghĩa vụ pháp lý.</li>
+    </ul>
+
+    <h2>6. Bảo mật dữ liệu</h2>
     <ul>
       <li>API keys được lưu trữ an toàn bằng <strong>Flutter Secure Storage</strong>.</li>
       <li>Tất cả kết nối mạng phục vụ dịch thuật đều sử dụng giao thức bảo mật <strong>HTTPS/TLS</strong>.</li>
@@ -281,20 +318,20 @@
       <li>Ứng dụng không sử dụng mã hóa miễn trừ (ITSAppUsesNonExemptEncryption = NO).</li>
     </ul>
 
-    <h2>6. Quyền của bạn đối với dữ liệu</h2>
+    <h2>7. Quyền của bạn đối với dữ liệu</h2>
     <ul>
       <li><strong>Truy cập:</strong> Bạn có thể xem toàn bộ sách và dữ liệu dịch thuật của mình trong ứng dụng.</li>
-      <li><strong>Xóa bỏ hoàn toàn:</strong> Việc gỡ cài đặt (uninstall) ứng dụng khỏi thiết bị sẽ tự động xóa sạch toàn bộ dữ liệu cục bộ.</li>
+      <li><strong>Xóa dữ liệu:</strong> Bạn có thể xóa sách cục bộ, xóa bản sách đã lưu trên Novara Cloud hoặc yêu cầu xóa tài khoản trong Ứng dụng. Gỡ ứng dụng không xóa dữ liệu mà store/provider độc lập phải giữ.</li>
       <li><strong>Kiểm soát API:</strong> Bạn có thể chủ động xóa hoặc thay đổi API key trong Cài đặt.</li>
     </ul>
 
-    <h2>7. Bảo vệ trẻ em</h2>
+    <h2>8. Bảo vệ trẻ em</h2>
     <p>Ứng dụng không hướng tới và không dành cho trẻ em dưới 13 tuổi. Chúng tôi không cố ý thu thập hay lưu trữ bất kỳ thông tin nào từ trẻ em.</p>
 
-    <h2>8. Thay đổi chính sách</h2>
+    <h2>9. Thay đổi chính sách</h2>
     <p>Chúng tôi có thể cập nhật chính sách bảo mật này theo thời gian. Mọi phiên bản mới sẽ được đăng tải ngay tại trang này cùng với ngày cập nhật mới nhất.</p>
 
-    <h2>9. Liên hệ hỗ trợ</h2>
+    <h2>10. Liên hệ hỗ trợ</h2>
     <p>Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào liên quan đến chính sách bảo mật này, xin vui lòng liên hệ:</p>
     <div class="card" style="text-align: center;">
       <p style="margin-bottom: 0; font-size: 15px; color: var(--text);">📧 Email: <a href="mailto:ndhao164@gmail.com">ndhao164@gmail.com</a></p>
