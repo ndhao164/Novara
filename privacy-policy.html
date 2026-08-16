@@ -260,8 +260,8 @@
           </tr>
           <tr>
             <td><strong>Device ID và push token</strong></td>
-            <td>Gửi thông báo, bảo vệ dịch vụ, vận hành ứng dụng và quảng cáo</td>
-            <td>Novara, Firebase Cloud Messaging và Yandex Mobile Ads</td>
+            <td>Gửi thông báo, Analytics khi opt-in, bảo vệ dịch vụ, vận hành ứng dụng và quảng cáo</td>
+            <td>Novara, Firebase Analytics/Messaging/Remote Config và Yandex Mobile Ads</td>
           </tr>
           <tr>
             <td><strong>Dữ liệu quảng cáo và tương tác</strong></td>
@@ -308,7 +308,7 @@
       <li><strong>Dịch thuật:</strong> Xử lý nội dung theo luồng Local/BYOK hoặc Novara AI mà bạn chọn.</li>
       <li><strong>Lưu trữ cục bộ:</strong> Sách, bản dịch, thuật ngữ và cài đặt được lưu trữ ngay trên thiết bị của bạn.</li>
       <li><strong>Tài khoản và giao dịch:</strong> Xác thực người dùng, quản lý ví lượt dịch, xác minh giao dịch và xử lý hoàn tiền/chargeback.</li>
-      <li><strong>Analytics:</strong> Chỉ thu thập sự kiện Analytics khi bạn bật tùy chọn này; không gửi nội dung sách, prompt hoặc API key.</li>
+      <li><strong>Analytics:</strong> Chỉ thu thập sự kiện Analytics khi bạn bật tùy chọn này. Firebase Analytics có thể dùng app-instance identifier để liên kết các sự kiện của cùng một bản cài đặt; Novara không gửi nội dung sách, prompt hoặc API key.</li>
       <li><strong>Quảng cáo:</strong> Yandex Mobile Ads có thể xử lý Device ID, vị trí gần đúng, tương tác sản phẩm và dữ liệu quảng cáo để hiển thị, đo lường hoặc cá nhân hóa quảng cáo. Trên iOS, cá nhân hóa/tracking chỉ được bật khi bạn đồng ý và cấp quyền App Tracking Transparency.</li>
       <li><strong>Thông báo và cấu hình:</strong> Firebase Cloud Messaging cung cấp push token được liên kết với tài khoản Novara để gửi thông báo chức năng; Firebase Remote Config cung cấp cấu hình tính năng.</li>
       <li><strong>Cloud backup:</strong> Snapshot dự án được mã hóa và gửi tới Google Drive hoặc iCloud Drive chỉ khi bạn bật tính năng tương ứng. Novara Server không lưu file backup Drive/iCloud.</li>
