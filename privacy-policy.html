@@ -200,10 +200,10 @@
 
     <section class="hero">
       <h1>🔐 Chính sách Bảo mật</h1>
-      <p>Cập nhật lần cuối: 16 tháng 8, 2026</p>
+      <p>Cập nhật lần cuối: 17 tháng 8, 2026</p>
     </section>
 
-    <p>Novara: AI Book Translator ("Ứng dụng", "chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách Novara xử lý dữ liệu khi bạn đọc, dịch, đăng nhập, sao lưu hoặc mua lượt dịch trong Ứng dụng.</p>
+    <p>Novara: AI Book Translator ("Ứng dụng", "chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách Novara xử lý dữ liệu khi bạn đọc, dịch, đăng nhập, sao lưu, nhận thông báo, xem quảng cáo hoặc mua lượt dịch trong Ứng dụng.</p>
 
     <h2>1. Thông tin chúng tôi thu thập</h2>
     <p>Dữ liệu được xử lý phụ thuộc vào tính năng bạn chủ động sử dụng:</p>
@@ -258,6 +258,26 @@
             <td>Báo giá, dịch, trả kết quả và hỗ trợ yêu cầu của bạn</td>
             <td>Hạ tầng riêng của Novara trong thời hạn giới hạn</td>
           </tr>
+          <tr>
+            <td><strong>Device ID và push token</strong></td>
+            <td>Gửi thông báo, bảo vệ dịch vụ, vận hành ứng dụng và quảng cáo</td>
+            <td>Novara, Firebase Cloud Messaging và Yandex Mobile Ads</td>
+          </tr>
+          <tr>
+            <td><strong>Dữ liệu quảng cáo và tương tác</strong></td>
+            <td>Hiển thị/đo lường quảng cáo; cá nhân hóa chỉ khi bạn cho phép</td>
+            <td>Yandex Mobile Ads; có thể gồm Device ID, vị trí gần đúng, tương tác sản phẩm và quảng cáo đã xem</td>
+          </tr>
+          <tr>
+            <td><strong>Sự kiện Analytics</strong></td>
+            <td>Đo độ ổn định và cải thiện tính năng khi bạn chủ động bật</td>
+            <td>Firebase Analytics; không gồm nội dung sách, prompt hoặc API key</td>
+          </tr>
+          <tr>
+            <td><strong>Backup dự án</strong></td>
+            <td>Sao lưu và khôi phục đa thiết bị khi bạn chủ động bật</td>
+            <td>Google Drive hoặc iCloud Drive thuộc tài khoản của bạn</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -289,17 +309,23 @@
       <li><strong>Lưu trữ cục bộ:</strong> Sách, bản dịch, thuật ngữ và cài đặt được lưu trữ ngay trên thiết bị của bạn.</li>
       <li><strong>Tài khoản và giao dịch:</strong> Xác thực người dùng, quản lý ví lượt dịch, xác minh giao dịch và xử lý hoàn tiền/chargeback.</li>
       <li><strong>Analytics:</strong> Chỉ thu thập sự kiện Analytics khi bạn bật tùy chọn này; không gửi nội dung sách, prompt hoặc API key.</li>
+      <li><strong>Quảng cáo:</strong> Yandex Mobile Ads có thể xử lý Device ID, vị trí gần đúng, tương tác sản phẩm và dữ liệu quảng cáo để hiển thị, đo lường hoặc cá nhân hóa quảng cáo. Trên iOS, cá nhân hóa/tracking chỉ được bật khi bạn đồng ý và cấp quyền App Tracking Transparency.</li>
+      <li><strong>Thông báo và cấu hình:</strong> Firebase Cloud Messaging cung cấp push token được liên kết với tài khoản Novara để gửi thông báo chức năng; Firebase Remote Config cung cấp cấu hình tính năng.</li>
+      <li><strong>Cloud backup:</strong> Snapshot dự án được mã hóa và gửi tới Google Drive hoặc iCloud Drive chỉ khi bạn bật tính năng tương ứng. Novara Server không lưu file backup Drive/iCloud.</li>
     </ul>
 
     <h2>4. Chia sẻ dữ liệu với bên thứ ba</h2>
     <p>Chúng tôi <strong>không bán</strong> nội dung EPUB, bản dịch hoặc API key của bạn. Tùy tính năng bạn chọn, dữ liệu có thể được xử lý bởi:</p>
     <ul>
       <li><strong>Novara:</strong> tài khoản, consent, báo giá, job, ví và nội dung tạm thời của Novara AI.</li>
-      <li><strong>Apple, Google/Firebase:</strong> xác thực tài khoản; App Store/Google Play xử lý giao dịch.</li>
+      <li><strong>Apple, Google/Firebase:</strong> xác thực tài khoản; Firebase Analytics khi bạn opt-in, Firebase Messaging cho thông báo và Firebase Remote Config cho cấu hình ứng dụng.</li>
       <li><strong>RevenueCat:</strong> xác minh giao dịch mua trong ứng dụng.</li>
+      <li><strong>Yandex Mobile Ads:</strong> cung cấp quảng cáo cơ bản hoặc quảng cáo cá nhân hóa khi bạn đồng ý; tracking trên iOS còn phụ thuộc quyền ATT.</li>
+      <li><strong>Google Drive và iCloud Drive:</strong> lưu backup mã hóa trong tài khoản cloud của bạn khi bạn chủ động kết nối và sao lưu.</li>
       <li><strong>Provider BYOK bạn chọn:</strong> nhận nội dung trực tiếp từ thiết bị để dịch.</li>
       <li><strong>Firebase Analytics:</strong> chỉ khi bạn bật Analytics trong Ứng dụng.</li>
     </ul>
+    <p>Chúng tôi yêu cầu các bên xử lý dữ liệu áp dụng biện pháp bảo vệ phù hợp với vai trò của họ và tuân thủ chính sách, hợp đồng cùng pháp luật áp dụng. Việc xử lý tại dịch vụ bên thứ ba còn chịu điều khoản và chính sách quyền riêng tư riêng của dịch vụ đó.</p>
 
     <h2>5. Lưu giữ dữ liệu Novara AI</h2>
     <ul>
@@ -308,6 +334,8 @@
       <li>Bản sách được lưu theo tùy chọn <code>full_epub_context</code>: tối đa 15 ngày từ lần sử dụng gần nhất, trừ khi bạn xóa sớm.</li>
       <li>Kết quả sau lần giao đầu tiên: tối đa 30 ngày; sau khi Ứng dụng xác nhận đã lưu thành công có thêm thời gian đệm tối đa 72 giờ trước khi đủ điều kiện xóa.</li>
       <li>Metadata consent, giao dịch và audit không chứa nội dung có thể được giữ lâu hơn khi cần cho tài khoản, tranh chấp, chống gian lận hoặc nghĩa vụ pháp lý.</li>
+      <li>Push token được giữ trong khi cần gửi thông báo cho tài khoản; Ứng dụng yêu cầu hủy token khi đăng xuất/xóa tài khoản và token hết hiệu lực sẽ được loại bỏ theo quy trình vận hành.</li>
+      <li>Dữ liệu Analytics/quảng cáo và backup được lưu theo lựa chọn của bạn cùng chính sách của Firebase, Yandex, Google Drive hoặc iCloud. Bạn có thể tắt consent hoặc xóa backup; một số bản ghi tối thiểu có thể được giữ theo chính sách chống gian lận, bảo mật hoặc nghĩa vụ pháp lý của provider.</li>
     </ul>
 
     <h2>6. Bảo mật dữ liệu</h2>
@@ -323,6 +351,8 @@
       <li><strong>Truy cập:</strong> Bạn có thể xem toàn bộ sách và dữ liệu dịch thuật của mình trong ứng dụng.</li>
       <li><strong>Xóa dữ liệu:</strong> Bạn có thể xóa sách cục bộ, xóa bản sách đã lưu trên Novara Cloud hoặc yêu cầu xóa tài khoản trong Ứng dụng. Gỡ ứng dụng không xóa dữ liệu mà store/provider độc lập phải giữ.</li>
       <li><strong>Kiểm soát API:</strong> Bạn có thể chủ động xóa hoặc thay đổi API key trong Cài đặt.</li>
+      <li><strong>Thu hồi consent:</strong> Trong Cài đặt, bạn có thể tắt “Cho phép Analytics” và đổi “Quyền riêng tư quảng cáo”. Quyền ATT và thông báo có thể thay đổi trong Cài đặt hệ thống iOS.</li>
+      <li><strong>Backup:</strong> Bạn có thể ngắt kết nối hoặc xóa snapshot trong màn hình Sao lưu &amp; khôi phục; dữ liệu cũng chịu quyền quản lý trong tài khoản Google Drive/iCloud của bạn.</li>
     </ul>
 
     <h2>8. Bảo vệ trẻ em</h2>
