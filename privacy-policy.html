@@ -246,7 +246,7 @@
           <tr>
             <td><strong>Tài khoản</strong></td>
             <td>Đăng nhập, bảo vệ tài nguyên và đồng bộ dịch vụ</td>
-            <td>Sign in with Apple/Google, Firebase Authentication và Novara</td>
+            <td>Firebase Authentication (Email/Mật khẩu, Sign in with Apple/Google) và Novara. Firebase xử lý việc gửi email xác minh và đặt lại mật khẩu.</td>
           </tr>
           <tr>
             <td><strong>Lịch sử mua hàng & ví lượt dịch</strong></td>
@@ -307,7 +307,7 @@
     <ul>
       <li><strong>Dịch thuật:</strong> Xử lý nội dung theo luồng Local/BYOK hoặc Novara AI mà bạn chọn.</li>
       <li><strong>Lưu trữ cục bộ:</strong> Sách, bản dịch, thuật ngữ và cài đặt được lưu trữ ngay trên thiết bị của bạn.</li>
-      <li><strong>Tài khoản và giao dịch:</strong> Xác thực người dùng, quản lý ví lượt dịch, xác minh giao dịch và xử lý hoàn tiền/chargeback.</li>
+      <li><strong>Tài khoản và giao dịch:</strong> Firebase Authentication hỗ trợ Email/Mật khẩu, Apple và Google; Firebase gửi email xác minh/đặt lại mật khẩu. Tài khoản Email chưa xác minh không được tạo dữ liệu tài khoản trên Novara Server. Sau khi xác minh, Novara quản lý ví lượt dịch, xác minh giao dịch và xử lý hoàn tiền/chargeback.</li>
       <li><strong>Analytics:</strong> Chỉ thu thập sự kiện Analytics khi bạn bật tùy chọn này. Firebase Analytics có thể dùng app-instance identifier để liên kết các sự kiện của cùng một bản cài đặt; Novara không gửi nội dung sách, prompt hoặc API key.</li>
       <li><strong>Quảng cáo:</strong> Yandex Mobile Ads có thể xử lý Device ID, vị trí gần đúng, tương tác sản phẩm và dữ liệu quảng cáo để hiển thị, đo lường hoặc cá nhân hóa quảng cáo. Trên iOS, cá nhân hóa/tracking chỉ được bật khi bạn đồng ý và cấp quyền App Tracking Transparency.</li>
       <li><strong>Thông báo và cấu hình:</strong> Firebase Cloud Messaging cung cấp push token được liên kết với tài khoản Novara để gửi thông báo chức năng; Firebase Remote Config cung cấp cấu hình tính năng.</li>
@@ -318,7 +318,7 @@
     <p>Chúng tôi <strong>không bán</strong> nội dung EPUB, bản dịch hoặc API key của bạn. Tùy tính năng bạn chọn, dữ liệu có thể được xử lý bởi:</p>
     <ul>
       <li><strong>Novara:</strong> tài khoản, consent, báo giá, job, ví và nội dung tạm thời của Novara AI.</li>
-      <li><strong>Apple, Google/Firebase:</strong> xác thực tài khoản; Firebase Analytics khi bạn opt-in, Firebase Messaging cho thông báo và Firebase Remote Config cho cấu hình ứng dụng.</li>
+      <li><strong>Apple, Google/Firebase:</strong> xác thực tài khoản bằng Email/Mật khẩu, Apple hoặc Google; gửi email xác minh/đặt lại mật khẩu; Firebase Analytics khi bạn opt-in, Firebase Messaging cho thông báo và Firebase Remote Config cho cấu hình ứng dụng.</li>
       <li><strong>RevenueCat:</strong> xác minh giao dịch mua trong ứng dụng.</li>
       <li><strong>Yandex Mobile Ads:</strong> cung cấp quảng cáo cơ bản hoặc quảng cáo cá nhân hóa khi bạn đồng ý; tracking trên iOS còn phụ thuộc quyền ATT.</li>
       <li><strong>Google Drive và iCloud Drive:</strong> lưu backup mã hóa trong tài khoản cloud của bạn khi bạn chủ động kết nối và sao lưu.</li>
